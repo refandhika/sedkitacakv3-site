@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: 247, 236, 197;
+  --foreground-hex: #000000;
+  --background-hex: #FFEAC5;
 }
 
 /* @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-rgb: 90, 74, 12;
+    --foreground-hex: 255, 255, 255;
+    --background-hex: 90, 74, 12;
   }
 } */
 
@@ -31,8 +31,8 @@ html {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background-color: rgb(var(--background-rgb));
+  color: var(--foreground-hex);
+  background-color: var(--background-hex);
 }
 
 @layer utilities {
@@ -86,15 +86,37 @@ body {
 }
 .rich-text code {
   padding: 0.25rem;
-  background-color: #f59e0b;
+  background-color: #FFDBB5;
+  color: #000000;
 }
 .rich-text pre {
   padding: 1.5rem 3rem;
-  background-color: #f59e0b;
+  background-color: #FFDBB5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 .rich-text pre code {
   padding: 0;
   background-color: transparent;
+  color: #000000;
+}
+.rich-text thead tr {
+  color: #FFFFFF;
+  background-color: #987070;
+}
+.rich-text tbody tr:nth-child(odd) {
+  background-color: #C39898;
+}
+.rich-text tbody tr:nth-child(even) {
+  background-color: #DBB5B5;
+}
+.rich-text th,
+.rich-text td {
+  padding: 0.5rem;
+}
+.rich-text hr {
+  border-color: #000000;
 }
 
 @keyframes blink {

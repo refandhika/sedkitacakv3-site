@@ -4,6 +4,8 @@ import "./globals.css";
 import SplashScreen from "@/app/ui/splashscreen";
 import NavLinks from "@/app/ui/navlinks";
 import CustomCursorAnimation from "@/app/ui/customcursor";
+import Script from "next/script";
+import AnalyticsTracker from './analytics'
 
 const elType = localFont({
   src: [
@@ -37,6 +39,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-4HTDGQR9JV`}
+        />
+        <Script
+          id="ga-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-4HTDGQR9JV', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${elType.className} antialiased`}
       >
@@ -46,6 +68,7 @@ export default function RootLayout({
         </header>
         {children}
         <CustomCursorAnimation />
+        <AnalyticsTracker />
       </body>
     </html>
   );

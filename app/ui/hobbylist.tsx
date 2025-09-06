@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { fetchHobbyList } from "@/app/lib/fetch";
-import Image from "next/image";
+//import Image from "next/image";
 
 const HobbyList = () => {
     //const [loading, setLoading] = useState(true);
@@ -29,7 +29,7 @@ const HobbyList = () => {
             {hobbies?.map((hobby: any, index: number) => (
                 <div className="py-4 flex flex-col lg:grid lg:grid-cols-2 gap-2 lg:gap-6" key={hobby.id}>
                   <div className={`w-full ${index % 2 ? "order-1" : "order-2"}`}>
-                    <Image
+                    <img
                       className="w-full h-full"
                       src={process.env.NEXT_PUBLIC_API_URL + hobby.image}
                       alt={`hobby-${index}`}
